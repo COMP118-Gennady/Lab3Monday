@@ -61,14 +61,20 @@ int main() {
 			case 4:
 				cout << "The sum of odd numbers is: " << sumOddArray(quantity, SIZE);
 				break;
-			// Exit
 			case 5:
+				if (isAllPositive(quantity, SIZE) == 1)
+					cout << "All numbers are positive";
+				else
+					cout << "Not all numbers are positive";
+				break;
+			// Exit
+			case 6:
 				// No code needed
 				break;
 			default:
 				assert(true);
 		}
-	} while (choice != 5);
+	} while (choice != 6);
 
 	cout << "\nHave a nice day:)" << endl;
 	return 0;
@@ -89,15 +95,16 @@ int printMenu(){
 		cout << "\n2) Calculate total";
 		cout << "\n3) Print total";
 		cout << "\n4) Sum of odd quantity";
-		cout << "\n5) Exit";
+		cout << "\n5) All positive check";
+		cout << "\n6) Exit";
 
 		cout << "\nEnter the choice: ";
 		cin >> choice;
 
-		if (choice < 1 || choice > 5){
+		if (choice < 1 || choice > 6){
 			cout << "\nWrong choice, try again.";
 		}
-	} while (choice < 1 || choice > 6);
+	} while (choice < 1 || choice > 7);
 	return choice;
 }
 
@@ -160,8 +167,8 @@ void displayArray(const int arr[], const int size){
  * <BR>
  * @param arr The array containing the values
  * @param size The size of the array.
+ * @return sum Sum of all odd numbers in the array
  */
-// Sums the odd numbers in the array and returns the result
 int sumOddArray(const int arr[], const int size){
 	int sum = 0;
 	for (int i = 0; i < size; i++) {
@@ -171,10 +178,21 @@ int sumOddArray(const int arr[], const int size){
 	return sum;
 }
 
+/**
+ * <code>isAllPositive</code> checks if all the values in the array
+ * are positive and return true or false.
+ * <BR>
+ * @param arr The array containing the values
+ * @param size The size of the array.
+ * @return true/false
+ */
 // If all the values in the array are positive return true
 bool isAllPositive(const int arr[], const int size){
-	//@TODO: You will need to complete this. Including makeing the appropriate comment header
-  return 0;
+	for(int i = 0; i < size; i++) {
+		if (arr[i] < 0)
+			return false;
+	}
+  return true;
 }
 
 // Finds the average of all the odd numbers in the array and stores this in the last argument
