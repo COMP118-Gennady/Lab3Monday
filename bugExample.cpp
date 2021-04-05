@@ -139,7 +139,7 @@ void multArrays(const int arrQuantity[], const int arrPrice[], int arrTotal[], c
  * @param size The size of the array.
  */
 void displayArray(const int arr[], const int size){
-	int sum = 0;
+	int sum = 0; //initialised sum
 
 	for (int i = 1; i < size; ++i){
 		cout << "\nValue at " << i << ": " << arr[i];
