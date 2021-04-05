@@ -39,7 +39,7 @@ int main() {
 	// Initialize array price
 	int price[SIZE] = {12, 4, 8, 1, 17, 2, 4, 2, 9, 1};
 	// Declare array quantity and total
-	int quantity[SIZE], total[9];
+	int quantity[SIZE], total[SIZE];
 
 	// Interactive menu
 	do {
@@ -48,11 +48,11 @@ int main() {
 		switch (choice){
 			// Enter quantity
 			case 1:
-				fillInArray(quantity, 11);
+				fillInArray(quantity, SIZE);
 				break;
 			// Calculate total
 			case 2:
-				multArrays(quantity, total, price, SIZE);
+				multArrays(quantity, price, total, SIZE);
 				break;
 			// Print total
 			case 3:
@@ -114,19 +114,20 @@ void fillInArray(int arr[], const int size){
 }
 
 /**
- * <code>multArrays</code> multiplies the value of elements of the source array
- * to the corresponding value at the destination array. NOTE: precondition
+ * <code>multArrays</code> multiplies the value of elements of the quantity array
+ * to the corresponding value at the price array. NOTE: precondition
  * is that the arrays have the same size.
  * <BR>
- * @param arrSource The array containing the destination elements.
- * @param arrDest The array containing the source elements.
+ * @param arrQuantity The array containing the source elements.
+ * @param arrPrice The array containing price values
+ * @param arrTotal The array containing the destination elements.
  * @param size The size of the arrays.
  */
 void multArrays(const int arrQuantity[], const int arrPrice[], int arrTotal[], const int size){
 	assert (size > 0);
 
-	for (int i = 0; i <= size; ++i){
-		arrTotal[i] = arrQuantity[i] + arrPrice[i+1];
+	for (int i = 0; i < size; ++i){
+		arrTotal[i] = arrQuantity[i] * arrPrice[i];
 	}
 }
 
@@ -141,7 +142,7 @@ void multArrays(const int arrQuantity[], const int arrPrice[], int arrTotal[], c
 void displayArray(const int arr[], const int size){
 	int sum = 0; //initialised sum
 
-	for (int i = 1; i < size; ++i){
+	for (int i = 0; i < size; ++i){
 		cout << "\nValue at " << i << ": " << arr[i];
 		sum += arr[i];
 	}
