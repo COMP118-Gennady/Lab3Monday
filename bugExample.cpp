@@ -58,14 +58,17 @@ int main() {
 			case 3:
 				displayArray(total, SIZE);
 				break;
-			// Exit
 			case 4:
+				cout << "The sum of odd numbers is: " << sumOddArray(quantity, SIZE);
+				break;
+			// Exit
+			case 5:
 				// No code needed
 				break;
 			default:
 				assert(true);
 		}
-	} while (choice != 4);
+	} while (choice != 5);
 
 	cout << "\nHave a nice day:)" << endl;
 	return 0;
@@ -85,15 +88,16 @@ int printMenu(){
 		cout << "\n1) Enter quantity";
 		cout << "\n2) Calculate total";
 		cout << "\n3) Print total";
-		cout << "\n4) Exit";
+		cout << "\n4) Sum of odd quantity";
+		cout << "\n5) Exit";
 
 		cout << "\nEnter the choice: ";
 		cin >> choice;
 
-		if (choice < 1 || choice > 4){
+		if (choice < 1 || choice > 5){
 			cout << "\nWrong choice, try again.";
 		}
-	} while (choice < 1 || choice > 5);
+	} while (choice < 1 || choice > 6);
 	return choice;
 }
 
@@ -150,10 +154,21 @@ void displayArray(const int arr[], const int size){
 	cout << "\nThe total is: " << sum;
 }
 
+/**
+ * <code>sumOddArray</code> sums all the odd values in the array and
+ * returns the total.
+ * <BR>
+ * @param arr The array containing the values
+ * @param size The size of the array.
+ */
 // Sums the odd numbers in the array and returns the result
 int sumOddArray(const int arr[], const int size){
-//@TODO: You will need to complete this. Including makeing the appropriate comment header
-	return 0;
+	int sum = 0;
+	for (int i = 0; i < size; i++) {
+		if (arr[i] % 2 == 0)
+			sum += arr[i];
+	}
+	return sum;
 }
 
 // If all the values in the array are positive return true
