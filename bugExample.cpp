@@ -80,7 +80,7 @@ int main() {
 			default:
 				assert(true);
 		}
-	} while (choice != 6);
+	} while (choice != 7);
 
 	cout << "\nHave a nice day:)" << endl;
 	return 0;
