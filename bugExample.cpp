@@ -41,6 +41,8 @@ int main() {
 	// Declare array quantity and total
 	int quantity[SIZE], total[SIZE];
 
+	int average = 0;
+
 	// Interactive menu
 	do {
 		choice = printMenu();
@@ -67,8 +69,12 @@ int main() {
 				else
 					cout << "Not all numbers are positive";
 				break;
+			case 6: 
+				avgOddArray(quantity, SIZE, average);
+				cout << "The average of odd numbers is: " << average;
+				break;
 			// Exit
-			case 6:
+			case 7:
 				// No code needed
 				break;
 			default:
@@ -96,15 +102,16 @@ int printMenu(){
 		cout << "\n3) Print total";
 		cout << "\n4) Sum of odd quantity";
 		cout << "\n5) All positive check";
-		cout << "\n6) Exit";
+		cout << "\n6) Find average of odd numbers";
+		cout << "\n7) Exit";
 
 		cout << "\nEnter the choice: ";
 		cin >> choice;
 
-		if (choice < 1 || choice > 6){
+		if (choice < 1 || choice > 7){
 			cout << "\nWrong choice, try again.";
 		}
-	} while (choice < 1 || choice > 7);
+	} while (choice < 1 || choice > 8);
 	return choice;
 }
 
@@ -172,7 +179,7 @@ void displayArray(const int arr[], const int size){
 int sumOddArray(const int arr[], const int size){
 	int sum = 0;
 	for (int i = 0; i < size; i++) {
-		if (arr[i] % 2 == 0)
+		if (arr[i] % 2 == 1)
 			sum += arr[i];
 	}
 	return sum;
@@ -186,7 +193,6 @@ int sumOddArray(const int arr[], const int size){
  * @param size The size of the array.
  * @return true/false
  */
-// If all the values in the array are positive return true
 bool isAllPositive(const int arr[], const int size){
 	for(int i = 0; i < size; i++) {
 		if (arr[i] < 0)
@@ -195,7 +201,20 @@ bool isAllPositive(const int arr[], const int size){
   return true;
 }
 
+/**
+ * <code>avgOddArray</code> computes the average of all odd numbers in the array
+ * by calling the sumOddArray and dividing it by the size variable.
+ * <BR>
+ * @param arr The array containing the values
+ * @param size The size of the array.
+ * @param avgOdd Holds average of all the odd numbers in the array
+ */
 // Finds the average of all the odd numbers in the array and stores this in the last argument
 void avgOddArray(const int arr[], const int size, int& avgOdd){
-	//@TODO: You will need to complete this. Including makeing the appropriate comment header
+	int count = 0; //To keep track of all odd numbers in the array
+	for (int i = 0; i < size; i++) {
+		if (arr[i] % 2 == 1)
+			count++;
+	}
+	avgOdd = sumOddArray(arr, size) / count;
 }
